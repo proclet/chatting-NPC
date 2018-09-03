@@ -1,41 +1,18 @@
-# Compiled Lua sources
-luac.out
+tool = Instance.new("Tool", game.Lighting) 
+handle = Instance.new("Part", tool) 
+handle.Name = "Handle"
 
-# luarocks build files
-*.src.rock
-*.zip
-*.tar.gz
+npc = Instance.new("Part", workspace) 
+clicker = Instance.new("ClickDetector", npc)
 
-# Object files
-*.o
-*.os
-*.ko
-*.obj
-*.elf
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
-*.def
-*.exp
-
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
-
-# Executables
-*.exe
-*.out
-*.app
-*.i*86
-*.x86_64
-*.hex
-
+clicker.MouseClick:Connect(function(jucator)	
+	game:GetService("Chat"):Chat(npc, "Press the X key to continue...", Enum.ChatColor.Blue) 		
+	mouse = game.Players.LocalPlayer:GetMouse() 
+	mouse.KeyDown:connect(function(key)
+	if key == "x" then 
+		game:GetService("Chat"):Chat(npc, "You've pressed the X key. I've got something for you", Enum.ChatColor.Red)	
+		giveme = tool:Clone()
+		giveme.Parent = jucator.Backpack			
+	end
+end)
+end)
